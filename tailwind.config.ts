@@ -14,10 +14,11 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        'roboto-light': ['"Roboto Light"', 'sans-serif'], // Add Gilroy to the font family
+        'roboto-light': ['"Roboto Light"', 'sans-serif'],
       },
       colors: {
         'white-02': 'rgba(255, 255, 255, 0.02)',
+        'white-05': 'rgba(255, 255, 255, 0.05)',
       },
     },
   },
