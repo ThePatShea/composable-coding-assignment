@@ -2,11 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Roboto Light';
+  src: url('/fonts/Roboto/Roboto-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
 :root {
   --Primary-Deep-Catch: #0F0F0F;
+  --white: #FFFFFF;
 }
 
 body {
   background: var(--Primary-Deep-Catch);
+  color: var(--white);
+  font-family: 'Roboto Light' !important;
 }
 
