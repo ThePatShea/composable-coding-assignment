@@ -3,21 +3,21 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Roboto Light";
+  font-family: "Roboto Light", sans-serif;
   src: url("/fonts/Roboto/Roboto-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
 }
 
 :root {
-  --Primary-Deep-Catch: #0f0f0f;
+  --deep-catch: #0f0f0f;
   --white: #ffffff;
   --picasso-rgb: 82, 242, 185;
   --picasso: rgb(var(--picasso-rgb));
 }
 
 body {
-  background: var(--Primary-Deep-Catch);
+  background: var(--deep-catch);
   color: var(--white);
 }
 

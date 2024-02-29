@@ -1,33 +1,28 @@
-import formatAsUsd from "@/helpers/formatAsUsd";
-import blocks from "@/data/blocks.json";
+import { useState } from "react";
+
 import Image from "next/image";
 import moment from "moment";
 
+import PageHeading from "@/components/PageHeading";
+import formatAsUsd from "@/helpers/formatAsUsd";
+import blocks from "@/data/blocks.json";
+import Block from "@/interfaces/block";
+
+import "@/app/globals.css";
+
 export default function Home() {
+  const [activeBlocks, setActiveBlocks] = useState<Block[]>(blocks);
+
   return (
     <main className="flex justify-center pt-[72px] px-2 font-roboto-light">
       <div className="flex flex-col w-[800px]">
-        <div className="flex p-6 rounded-3xl border border-white border-opacity-10 mb-10">
-          <div className="flex justify-center mr-6 bg-black rounded-full w-14 h-14">
-            <Image
-              src="/icons/solana.svg"
-              alt="Solana Icon"
-              width="33"
-              height="33"
-            />
-          </div>
-          <div>
-            <h1 className="text-white text-2xl font-medium leading-none mb-4">
-              Assignment block explorer
-            </h1>
-            <h6 className="text-white text-opacity-60 text-sm font-medium leading-none">
-              Check list of blocks and detailed view.
-            </h6>
-          </div>
-        </div>
+        <PageHeading
+          title={"Assignment block explorer"}
+          subtitle="Check list of blocks and detailed view."
+        />
         <input
           type="text"
-          className="rounded-2xl bg-white-opacity-02 hover:bg-white-opacity-05 focus:bg-picasso-opacity-06 focus:bg-opacity-10 px-4 py-[19px] text-white text-sm placeholder-gray-50 placeholder-opacity-60 hover:placeholder-opacity-100 outline-none focus:border-solid focus:border focus:border-picasso caret-picasso mb-6"
+          className="rounded-2xl bg-white-opacity-02 hover:bg-white-opacity-05 focus:bg-picasso-opacity-06 focus:bg-opacity-10 px-4 py-[19px] text-white text-sm placeholder-gray-50 placeholder-opacity-60 hover:placeholder-opacity-100 outline-none focus:border-solid border border-deep-catch focus:border-picasso caret-picasso mb-6"
           placeholder="Search for transactions, blocks, accounts"
         />
         <div>

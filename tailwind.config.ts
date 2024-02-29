@@ -22,6 +22,7 @@ const config: Config = {
         picasso: "var(--picasso)",
         "picasso-opacity-50": "rgba(var(--picasso-rgb), 0.5)",
         "picasso-opacity-06": "rgba(var(--picasso-rgb), 0.06)",
+        "deep-catch": "var(--deep-catch)",
       },
     },
   },
