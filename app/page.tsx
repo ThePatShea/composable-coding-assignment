@@ -1,4 +1,4 @@
-import Image from "next/image";
+import blocks from "@/helpers/blocks.json";
 
 export default function Home() {
   return (
@@ -10,9 +10,29 @@ export default function Home() {
         </div>
         <input
           type="text"
-          className="rounded-2xl bg-white-opacity-02 hover:bg-white-opacity-05 focus:bg-picasso-opacity-10 focus:bg-opacity-10 px-4 py-5 text-white text-sm placeholder-gray-50 placeholder-opacity-60 hover:placeholder-opacity-100 outline-none focus:border-solid focus:border focus:border-picasso caret-picasso"
+          className="rounded-2xl bg-white-opacity-02 hover:bg-white-opacity-05 focus:bg-picasso-opacity-10 focus:bg-opacity-10 px-4 py-5 text-white text-sm placeholder-gray-50 placeholder-opacity-60 hover:placeholder-opacity-100 outline-none focus:border-solid focus:border focus:border-picasso caret-picasso mb-6"
           placeholder="Search for transactions, blocks, accounts"
         />
+        <div>
+          <div className="grid grid-cols-6 gap-4 px-6 py-4 text-white text-opacity-60">
+            <div className="col-span-1 text-xs">Block hash</div>
+            <div className="col-span-1 text-xs">Slot</div>
+            <div className="col-span-1 text-xs">Timestamp</div>
+            <div className="col-span-1 text-xs">Tx count</div>
+            <div className="col-span-1 text-xs">Leader</div>
+            <div className="col-span-1 text-xs">Reward</div>
+          </div>
+            {blocks.map((block, i) => (
+              <div key={i} className="grid grid-cols-6 gap-4 bg-white-opacity-02 hover:bg-white-opacity-05 px-6 py-4 rounded-2xl mb-1 hover:cursor-pointer text-white text-opacity-60 hover:text-opacity-100">
+                <div className="col-span-1 text-sm text-picasso text-opacity-100 truncate">{block.blockHash}</div>
+                <div className="col-span-1 text-sm text-picasso text-opacity-100">#{block.slot}</div>
+                <div className="col-span-1 text-sm">{block.timestamp}</div>
+                <div className="col-span-1 text-sm">{block.txCount}</div>
+                <div className="col-span-1 text-sm text-picasso text-opacity-100 truncate">{block.leader}</div>
+                <div className="col-span-1 text-sm">{block.rewardSol} SOL (${block.rewardUsd})</div>
+              </div>
+            ))}
+        </div>
       </div>
     </main>
   );
