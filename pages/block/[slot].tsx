@@ -5,6 +5,8 @@ import Image from "next/image";
 import moment from "moment";
 
 import { selectBlock } from "@/reducers/blockSlice";
+
+import getRelativeTime from "@/helpers/getRelativeTime";
 import formatAsUsd from "@/helpers/formatAsUsd";
 
 import PageHeading from "@/components/PageHeading";
@@ -57,6 +59,24 @@ export default function Block() {
           <InfoBox
             title="Block"
             subtitle={`#${selectedBlock.slot}`}
+            colSpan={1}
+          />
+          <InfoBox
+            title="Timestamp"
+            subtitle={getRelativeTime(selectedBlock.timestamp)}
+            colSpan={1}
+          />
+          <InfoBox
+            title="Date (UTC)"
+            subtitle={moment
+              .unix(selectedBlock.timestamp)
+              .utc()
+              .format("MMM D, YYYY HH:mm:ss")}
+            colSpan={1}
+          />
+          <InfoBox
+            title="Transactions"
+            subtitle={String(selectedBlock.txCount)}
             colSpan={1}
           />
         </div>
