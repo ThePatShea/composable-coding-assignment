@@ -1,4 +1,5 @@
 import blocks from "@/helpers/blocks.json";
+import moment from 'moment';
 
 export default function Home() {
   return (
@@ -26,7 +27,7 @@ export default function Home() {
               <div key={i} className="grid grid-cols-6 gap-4 bg-white-opacity-02 hover:bg-white-opacity-05 px-6 py-4 rounded-2xl mb-1 hover:cursor-pointer text-white text-opacity-60 hover:text-opacity-100">
                 <div className="col-span-1 text-sm text-picasso text-opacity-100 truncate">{block.blockHash}</div>
                 <div className="col-span-1 text-sm text-picasso text-opacity-100">#{block.slot}</div>
-                <div className="col-span-1 text-sm">{block.timestamp}</div>
+                <div className="col-span-1 text-sm">{moment.unix(block.timestamp).fromNow()}</div>
                 <div className="col-span-1 text-sm">{block.txCount}</div>
                 <div className="col-span-1 text-sm text-picasso text-opacity-100 truncate">{block.leader}</div>
                 <div className="col-span-1 text-sm">{block.rewardSol} SOL (${block.rewardUsd})</div>
