@@ -14,17 +14,18 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        'roboto-light': ['"Roboto Light"', 'sans-serif'],
+        "roboto-light": ['"Roboto Light"', "sans-serif"],
       },
       colors: {
-        'white-opacity-02': 'rgba(255, 255, 255, 0.02)',
-        'white-opacity-05': 'rgba(255, 255, 255, 0.05)',
-        'picasso': 'var(--picasso)',
-        'picasso-opacity-50': 'rgba(var(--picasso-rgb), 0.5)',
-        'picasso-opacity-06': 'rgba(var(--picasso-rgb), 0.06)',
+        "white-opacity-02": "rgba(255, 255, 255, 0.02)",
+        "white-opacity-05": "rgba(255, 255, 255, 0.05)",
+        picasso: "var(--picasso)",
+        "picasso-opacity-50": "rgba(var(--picasso-rgb), 0.5)",
+        "picasso-opacity-06": "rgba(var(--picasso-rgb), 0.06)",
       },
     },
   },
   plugins: [],
 };
+
 export default config;

@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Roboto Light';
-  src: url('/fonts/Roboto/Roboto-Light.ttf') format('truetype');
+  font-family: "Roboto Light";
+  src: url("/fonts/Roboto/Roboto-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
 }
 
 :root {
-  --Primary-Deep-Catch: #0F0F0F;
-  --white: #FFFFFF;
+  --Primary-Deep-Catch: #0f0f0f;
+  --white: #ffffff;
   --picasso-rgb: 82, 242, 185;
   --picasso: rgb(var(--picasso-rgb));
 }
