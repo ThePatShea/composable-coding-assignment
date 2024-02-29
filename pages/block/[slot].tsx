@@ -1,8 +1,10 @@
-import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import moment from "moment";
 
+import { selectBlock } from "@/reducers/blockSlice";
 import PageHeading from "@/components/PageHeading";
 import formatAsUsd from "@/helpers/formatAsUsd";
 
@@ -12,9 +14,20 @@ import Block from "@/interfaces/block";
 import "@/app/globals.css";
 
 export default function Block() {
+  const allBlocks = useSelector((state: BlocksState) => state.allBlocks);
   const selectedBlock = useSelector(
     (state: BlocksState) => state.selectedBlock
   );
+
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  useEffect(() => {
+    const slot = router.query.slot as string;
+    const block = allBlocks.find((block) => block.slot === +slot) || null;
+
+    dispatch(selectBlock(block));
+  }, [router, allBlocks, dispatch]);
 
   if (!selectedBlock) {
     return (
@@ -33,7 +46,7 @@ export default function Block() {
     <main className="flex justify-center pt-[72px] px-2 font-roboto-light">
       <div className="flex flex-col w-[810px]">
         <PageHeading
-          title={`Block #${selectedBlock?.slot}`}
+          title={`Block #${selectedBlock.slot}`}
           subtitle="Check the block details."
         />
       </div>
