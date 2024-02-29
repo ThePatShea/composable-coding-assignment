@@ -1,5 +1,6 @@
 interface Block {
   blockHash: string;
+  prevBlockHash: string;
   slot: number;
   timestamp: number;
   txCount: number;

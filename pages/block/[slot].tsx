@@ -55,7 +55,7 @@ export default function Block() {
           title={`Block #${selectedBlock.slot}`}
           subtitle="Check the block details."
         />
-        <div className="grid grid-cols-4 gap-6">
+        <div className="grid grid-cols-4 gap-3">
           <InfoBox
             title="Block"
             subtitle={`#${selectedBlock.slot}`}
@@ -78,6 +78,24 @@ export default function Block() {
             title="Transactions"
             subtitle={String(selectedBlock.txCount)}
             colSpan={1}
+          />
+          <InfoBox
+            title="Block hash"
+            subtitle={selectedBlock.blockHash}
+            colSpan={4}
+          />
+          <InfoBox title="Leader" subtitle={selectedBlock.leader} colSpan={2} />
+          <InfoBox
+            title="Reward"
+            subtitle={`${selectedBlock.rewardSol} SOL (${formatAsUsd(
+              selectedBlock.rewardUsd
+            )})`}
+            colSpan={2}
+          />
+          <InfoBox
+            title="Previous Block Hash"
+            subtitle={selectedBlock.prevBlockHash}
+            colSpan={4}
           />
         </div>
       </div>

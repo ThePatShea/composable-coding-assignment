@@ -102,7 +102,6 @@ export default function Home() {
           />
           <ClearSearchButton />
         </div>
-
         <div>
           <div className="grid grid-cols-6 gap-2 px-6 py-4 text-white text-opacity-60">
             <div className="col-span-1 text-xs">Block hash</div>
