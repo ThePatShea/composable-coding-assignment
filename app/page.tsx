@@ -10,7 +10,7 @@ export default function Home() {
         </div>
         <input
           type="text"
-          className="rounded-2xl bg-white bg-white-02 hover:bg-white-05 px-4 py-5 text-white text-sm text-opacity-60 placeholder-gray-50 placeholder-opacity-60 hover:placeholder-opacity-100"
+          className="rounded-2xl bg-white-opacity-02 hover:bg-white-opacity-05 focus:bg-picasso-opacity-10 focus:bg-opacity-10 px-4 py-5 text-white text-sm placeholder-gray-50 placeholder-opacity-60 hover:placeholder-opacity-100 outline-none focus:border-solid focus:border focus:border-picasso caret-picasso"
           placeholder="Search for transactions, blocks, accounts"
         />
       </div>

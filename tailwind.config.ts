@@ -17,8 +17,10 @@ const config: Config = {
         'roboto-light': ['"Roboto Light"', 'sans-serif'],
       },
       colors: {
-        'white-02': 'rgba(255, 255, 255, 0.02)',
-        'white-05': 'rgba(255, 255, 255, 0.05)',
+        'white-opacity-02': 'rgba(255, 255, 255, 0.02)',
+        'white-opacity-05': 'rgba(255, 255, 255, 0.05)',
+        'picasso': 'var(--picasso)',
+        'picasso-opacity-10': 'rgba(var(--picasso-rgb), 0.06)',
       },
     },
   },

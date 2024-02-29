@@ -12,6 +12,8 @@
 :root {
   --Primary-Deep-Catch: #0F0F0F;
   --white: #FFFFFF;
+  --picasso-rgb: 82, 242, 185;
+  --picasso: rgb(var(--picasso-rgb));
 }
 
 body {
@@ -19,3 +21,6 @@ body {
   color: var(--white);
 }
 
+.caret-picasso {
+  caret-color: var(--picasso);
+}
