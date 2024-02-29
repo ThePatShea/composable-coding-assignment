@@ -15,20 +15,51 @@ export default function Home() {
   const allBlocks = useSelector((state: BlocksState) => state.allBlocks);
 
   const [activeBlocks, setActiveBlocks] = useState<Block[]>(allBlocks);
+  const [searchValue, setSearchValue] = useState<string>("");
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const searchValue = e.target.value.toLowerCase();
+    const value = e.target.value.toLowerCase();
+    setSearchValue(value);
 
     const filteredBlocks = allBlocks.filter((block) => {
       return (
-        block.blockHash.toLowerCase().includes(searchValue) ||
-        block.leader.toLowerCase().includes(searchValue) ||
-        block.slot.toString().includes(searchValue)
+        block.blockHash.toLowerCase().includes(value) ||
+        block.leader.toLowerCase().includes(value) ||
+        block.slot.toString().includes(value)
       );
     });
 
     setActiveBlocks(filteredBlocks);
   };
+
+  const handleClearSearch = () => {
+    setSearchValue("");
+    setActiveBlocks(allBlocks);
+  };
+
+  const ClearSearchButton = () => (
+    <button
+      className={`absolute right-4 top-5 text-xl font-light text-white text-opacity-60 hover:text-opacity-100 focus:outline-none ${
+        searchValue === "" && "hidden"
+      }`}
+      onClick={handleClearSearch}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="currentColor"
+        className="w-[18px] h-[18px]"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M6 18 18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+  );
 
   return (
     <main className="flex justify-center pt-[72px] px-2 font-roboto-light">
@@ -37,12 +68,17 @@ export default function Home() {
           title={"Assignment block explorer"}
           subtitle="Check list of blocks and detailed view."
         />
-        <input
-          type="text"
-          className="rounded-2xl bg-white-opacity-02 hover:bg-white-opacity-05 focus:bg-picasso-opacity-06 focus:bg-opacity-10 px-4 py-[19px] text-white text-sm placeholder-gray-50 placeholder-opacity-60 hover:placeholder-opacity-100 outline-none focus:border-solid border border-deep-catch focus:border-picasso caret-picasso mb-6"
-          placeholder="Search for transactions, blocks, accounts"
-          onChange={handleSearch}
-        />
+        <div className="relative">
+          <input
+            type="text"
+            className="w-full rounded-2xl bg-white-opacity-02 hover:bg-white-opacity-05 focus:bg-picasso-opacity-06 focus:bg-opacity-10 px-4 py-[19px] text-white text-sm placeholder-gray-50 placeholder-opacity-60 hover:placeholder-opacity-100 outline-none focus:border-solid border border-deep-catch focus:border-picasso caret-picasso mb-6"
+            placeholder="Search for transactions, blocks, accounts"
+            value={searchValue}
+            onChange={handleSearch}
+          />
+          <ClearSearchButton />
+        </div>
+
         <div>
           <div className="grid grid-cols-6 gap-2 px-6 py-4 text-white text-opacity-60">
             <div className="col-span-1 text-xs">Block hash</div>
