@@ -18,14 +18,16 @@ export default function Home() {
   const [searchValue, setSearchValue] = useState<string>("");
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.toLowerCase();
+    const value = e.target.value;
     setSearchValue(value);
+
+    const lowercaseValue = value.toLowerCase();
 
     const filteredBlocks = allBlocks.filter((block) => {
       return (
-        block.blockHash.toLowerCase().includes(value) ||
-        block.leader.toLowerCase().includes(value) ||
-        block.slot.toString().includes(value)
+        block.blockHash.toLowerCase().includes(lowercaseValue) ||
+        block.leader.toLowerCase().includes(lowercaseValue) ||
+        block.slot.toString().includes(lowercaseValue)
       );
     });
 
@@ -69,9 +71,30 @@ export default function Home() {
           subtitle="Check list of blocks and detailed view."
         />
         <div className="relative">
+          <div className="absolute left-4 top-[22px]">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="search-md">
+                <path
+                  id="Solid"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M7.33331 1.33331C4.0196 1.33331 1.33331 4.0196 1.33331 7.33331C1.33331 10.647 4.0196 13.3333 7.33331 13.3333C8.74999 13.3333 10.052 12.8423 11.0784 12.0212L13.5286 14.4714C13.7889 14.7317 14.211 14.7317 14.4714 14.4714C14.7317 14.211 14.7317 13.7889 14.4714 13.5286L12.0212 11.0784C12.8423 10.052 13.3333 8.74999 13.3333 7.33331C13.3333 4.0196 10.647 1.33331 7.33331 1.33331ZM2.66665 7.33331C2.66665 4.75598 4.75598 2.66665 7.33331 2.66665C9.91064 2.66665 12 4.75598 12 7.33331C12 9.91064 9.91064 12 7.33331 12C4.75598 12 2.66665 9.91064 2.66665 7.33331Z"
+                  fill="white"
+                  fill-opacity="0.6"
+                />
+              </g>
+            </svg>
+          </div>
+
           <input
             type="text"
-            className="w-full rounded-2xl bg-white-opacity-02 hover:bg-white-opacity-05 focus:bg-picasso-opacity-06 focus:bg-opacity-10 px-4 py-[19px] text-white text-sm placeholder-gray-50 placeholder-opacity-60 hover:placeholder-opacity-100 outline-none focus:border-solid border border-deep-catch focus:border-picasso caret-picasso mb-6"
+            className="w-full rounded-2xl bg-white-opacity-02 hover:bg-white-opacity-05 focus:bg-picasso-opacity-06 focus:bg-opacity-10 px-10 pr-4 py-[19px] text-white text-sm placeholder-gray-50 placeholder-opacity-60 hover:placeholder-opacity-100 outline-none focus:border-solid border border-deep-catch focus:border-picasso caret-picasso mb-6"
             placeholder="Search for transactions, blocks, accounts"
             value={searchValue}
             onChange={handleSearch}
