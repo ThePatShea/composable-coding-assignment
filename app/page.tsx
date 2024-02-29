@@ -1,3 +1,4 @@
+import formatAsUsd from "@/helpers/formatAsUsd";
 import blocks from "@/helpers/blocks.json";
 import moment from 'moment';
 
@@ -30,7 +31,7 @@ export default function Home() {
                 <div className="col-span-1 text-sm">{moment.unix(block.timestamp).fromNow()}</div>
                 <div className="col-span-1 text-sm">{block.txCount}</div>
                 <div className="col-span-1 text-sm text-picasso text-opacity-100 truncate">{block.leader}</div>
-                <div className="col-span-1 text-sm">{block.rewardSol} SOL (${block.rewardUsd})</div>
+                <div className="col-span-1 text-sm">{block.rewardSol} SOL ({formatAsUsd(block.rewardUsd)})</div>
               </div>
             ))}
         </div>
