@@ -14,10 +14,21 @@ import "@/app/globals.css";
 export default function Home() {
   const allBlocks = useSelector((state: BlocksState) => state.allBlocks);
 
-  console.log("allBlocks");
-  console.log(allBlocks);
-
   const [activeBlocks, setActiveBlocks] = useState<Block[]>(allBlocks);
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const searchValue = e.target.value.toLowerCase();
+
+    const filteredBlocks = allBlocks.filter((block) => {
+      return (
+        block.blockHash.toLowerCase().includes(searchValue) ||
+        block.leader.toLowerCase().includes(searchValue) ||
+        block.slot.toString().includes(searchValue)
+      );
+    });
+
+    setActiveBlocks(filteredBlocks);
+  };
 
   return (
     <main className="flex justify-center pt-[72px] px-2 font-roboto-light">
@@ -30,6 +41,7 @@ export default function Home() {
           type="text"
           className="rounded-2xl bg-white-opacity-02 hover:bg-white-opacity-05 focus:bg-picasso-opacity-06 focus:bg-opacity-10 px-4 py-[19px] text-white text-sm placeholder-gray-50 placeholder-opacity-60 hover:placeholder-opacity-100 outline-none focus:border-solid border border-deep-catch focus:border-picasso caret-picasso mb-6"
           placeholder="Search for transactions, blocks, accounts"
+          onChange={handleSearch}
         />
         <div>
           <div className="grid grid-cols-6 gap-2 px-6 py-4 text-white text-opacity-60">
