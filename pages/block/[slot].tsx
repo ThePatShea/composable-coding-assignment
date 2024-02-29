@@ -13,7 +13,7 @@ import "@/app/globals.css";
 export default function Block() {
   return (
     <main className="flex justify-center pt-[72px] px-2 font-roboto-light">
-      <div className="flex flex-col w-[800px]">
+      <div className="flex flex-col w-[810px]">
         <PageHeading
           title={"Block #####"}
           subtitle="Check the block details."
