@@ -13,7 +13,7 @@ const blocksSlice = createSlice({
   name: "block",
   initialState,
   reducers: {
-    selectBlock: (state, action: PayloadAction<Block>) => {
+    selectBlock: (state, action: PayloadAction<Block | null>) => {
       state.selectedBlock = action.payload;
     },
   },

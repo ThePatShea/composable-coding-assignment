@@ -1,8 +1,10 @@
-import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import moment from "moment";
 
+import { selectBlock } from "@/reducers/blockSlice";
 import PageHeading from "@/components/PageHeading";
 import formatAsUsd from "@/helpers/formatAsUsd";
 
@@ -16,6 +18,13 @@ export default function Home() {
 
   const [activeBlocks, setActiveBlocks] = useState<Block[]>(allBlocks);
   const [searchValue, setSearchValue] = useState<string>("");
+
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  useEffect(() => {
+    dispatch(selectBlock(null));
+  }, [dispatch]);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -63,6 +72,11 @@ export default function Home() {
     </button>
   );
 
+  const handleRowClick = (block: Block) => {
+    dispatch(selectBlock(block));
+    router.push(`/block/${block.slot}`);
+  };
+
   return (
     <main className="flex justify-center pt-[72px] px-2 font-roboto-light">
       <div className="flex flex-col w-[810px]">
@@ -102,6 +116,7 @@ export default function Home() {
             <div
               key={i}
               className="grid grid-cols-6 gap-1 bg-white-opacity-02 hover:bg-white-opacity-05 px-6 py-[18px] rounded-2xl mb-1 text-white text-opacity-60 hover:text-opacity-100 hover:cursor-pointer"
+              onClick={() => handleRowClick(block)}
             >
               <div className="col-span-1 text-sm text-picasso text-opacity-100 hover:text-picasso-opacity-50 truncate">
                 {block.blockHash}
