@@ -12,8 +12,8 @@ const PageHeading: React.FC<PageHeadingProps> = ({ title, subtitle }) => {
         <Image
           src="/icons/solana.svg"
           alt="Solana Icon"
-          width="33"
           height="33"
+          width="33"
         />
       </div>
       <div>

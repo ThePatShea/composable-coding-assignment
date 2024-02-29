@@ -51,10 +51,24 @@ export default function Block() {
   return (
     <main className="flex justify-center pt-[72px] px-2 font-roboto-light">
       <div className="flex flex-col w-[810px]">
-        <PageHeading
-          title={`Block #${selectedBlock.slot}`}
-          subtitle="Check the block details."
-        />
+        <div className="flex">
+          <div
+            className={`flex w-[72px] mr-6 justify-center bg-white-opacity-02 px-1 py-6 rounded-3xl shadow-lg mb-10`}
+          >
+            <Image
+              src="/icons/back.svg"
+              alt="Solana Icon"
+              height="25"
+              width="24"
+            />
+          </div>
+          <div className="flex-grow">
+            <PageHeading
+              title={`Block #${selectedBlock.slot}`}
+              subtitle="Check the block details."
+            />
+          </div>
+        </div>
         <div className="grid grid-cols-4 gap-3">
           <InfoBox
             title="Block"
