@@ -1,17 +1,23 @@
+import { useSelector } from "react-redux";
 import { useState } from "react";
-
 import Image from "next/image";
 import moment from "moment";
 
 import PageHeading from "@/components/PageHeading";
 import formatAsUsd from "@/helpers/formatAsUsd";
-import blocks from "@/data/blocks.json";
+
+import BlocksState from "@/interfaces/blocksState";
 import Block from "@/interfaces/block";
 
 import "@/app/globals.css";
 
 export default function Home() {
-  const [activeBlocks, setActiveBlocks] = useState<Block[]>(blocks);
+  const allBlocks = useSelector((state: BlocksState) => state.allBlocks);
+
+  console.log("allBlocks");
+  console.log(allBlocks);
+
+  const [activeBlocks, setActiveBlocks] = useState<Block[]>(allBlocks);
 
   return (
     <main className="flex justify-center pt-[72px] px-2 font-roboto-light">
@@ -34,7 +40,7 @@ export default function Home() {
             <div className="col-span-1 text-xs">Leader</div>
             <div className="col-span-1 text-xs">Reward</div>
           </div>
-          {blocks.map((block, i) => (
+          {activeBlocks.map((block, i) => (
             <div
               key={i}
               className="grid grid-cols-6 gap-2 bg-white-opacity-02 hover:bg-white-opacity-05 px-6 py-[18px] rounded-2xl mb-1 text-white text-opacity-60 hover:text-opacity-100 hover:cursor-pointer"
