@@ -1,3 +1,7 @@
+import copyTextToClipboard from "@/helpers/copyTextToClipboard";
+
+import CopyIcon from "@/components/SvgIcon/CopyIcon";
+
 interface InfoBoxProps {
   title: string;
   subtitle: string;
@@ -20,8 +24,19 @@ const InfoBox: React.FC<InfoBoxProps> = ({ title, subtitle, colSpan }) => {
       <h6 className="text-white text-center text-opacity-60 text-xs leading-none mb-3">
         {title}
       </h6>
-      <p className="mt-1 text-white text-sm text-center leading-none">
-        {subtitle}
+      <p className="mt-1 text-white text-sm text-center leading-none flex justify-center">
+        <span>{subtitle}</span>
+        <span
+          className="ml-2 hover:cursor-pointer copy-icon-container"
+          onClick={() => copyTextToClipboard(subtitle)}
+        >
+          <span className="copy-icon-transparent">
+            <CopyIcon width={17} height={16} fill="white" fillOpacity={0.6} />
+          </span>
+          <span className="copy-icon-solid">
+            <CopyIcon width={17} height={16} fill="white" fillOpacity={1} />
+          </span>
+        </span>
       </p>
     </div>
   );

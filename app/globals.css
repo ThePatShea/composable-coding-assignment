@@ -24,3 +24,18 @@ body {
 .caret-picasso {
   caret-color: var(--picasso);
 }
+
+.copy-icon-container {
+  .copy-icon-solid {
+    display: none;
+  }
+
+  &:hover {
+    .copy-icon-solid {
+      display: block;
+    }
+    .copy-icon-transparent {
+      display: none;
+    }
+  }
+}
