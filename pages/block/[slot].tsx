@@ -5,8 +5,10 @@ import Image from "next/image";
 import moment from "moment";
 
 import { selectBlock } from "@/reducers/blockSlice";
-import PageHeading from "@/components/PageHeading";
 import formatAsUsd from "@/helpers/formatAsUsd";
+
+import PageHeading from "@/components/PageHeading";
+import InfoBox from "@/components/InfoBox";
 
 import BlocksState from "@/interfaces/blocksState";
 import Block from "@/interfaces/block";
@@ -23,11 +25,13 @@ export default function Block() {
   const router = useRouter();
 
   useEffect(() => {
+    if (selectedBlock) return;
+
     const slot = router.query.slot as string;
     const block = allBlocks.find((block) => block.slot === +slot) || null;
 
     dispatch(selectBlock(block));
-  }, [router, allBlocks, dispatch]);
+  }, [router, allBlocks, dispatch, selectedBlock]);
 
   if (!selectedBlock) {
     return (
@@ -49,6 +53,13 @@ export default function Block() {
           title={`Block #${selectedBlock.slot}`}
           subtitle="Check the block details."
         />
+        <div className="grid grid-cols-4 gap-6">
+          <InfoBox
+            title="Block"
+            subtitle={`#${selectedBlock.slot}`}
+            colSpan={1}
+          />
+        </div>
       </div>
     </main>
   );
