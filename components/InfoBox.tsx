@@ -6,9 +6,15 @@ interface InfoBoxProps {
   title: string;
   subtitle: string;
   colSpan: number;
+  copy: boolean;
 }
 
-const InfoBox: React.FC<InfoBoxProps> = ({ title, subtitle, colSpan }) => {
+const InfoBox: React.FC<InfoBoxProps> = ({
+  title,
+  subtitle,
+  colSpan,
+  copy = false,
+}) => {
   return (
     <div
       className={`${
@@ -27,7 +33,9 @@ const InfoBox: React.FC<InfoBoxProps> = ({ title, subtitle, colSpan }) => {
       <p className="mt-1 text-white text-sm text-center leading-none flex justify-center">
         <span>{subtitle}</span>
         <span
-          className="ml-2 hover:cursor-pointer copy-icon-container"
+          className={`ml-2 hover:cursor-pointer copy-icon-container ${
+            copy === false && "hidden"
+          }`}
           onClick={() => copyTextToClipboard(subtitle)}
         >
           <span className="copy-icon-transparent">

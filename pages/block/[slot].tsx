@@ -76,11 +76,13 @@ export default function Block() {
             title="Block"
             subtitle={`#${selectedBlock.slot}`}
             colSpan={1}
+            copy={true}
           />
           <InfoBox
             title="Timestamp"
             subtitle={getRelativeTime(selectedBlock.timestamp)}
             colSpan={1}
+            copy={false}
           />
           <InfoBox
             title="Date (UTC)"
@@ -89,29 +91,39 @@ export default function Block() {
               .utc()
               .format("MMM D, YYYY HH:mm:ss")}
             colSpan={1}
+            copy={false}
           />
           <InfoBox
             title="Transactions"
             subtitle={String(selectedBlock.txCount)}
             colSpan={1}
+            copy={false}
           />
           <InfoBox
             title="Block hash"
             subtitle={selectedBlock.blockHash}
             colSpan={4}
+            copy={false}
           />
-          <InfoBox title="Leader" subtitle={selectedBlock.leader} colSpan={2} />
+          <InfoBox
+            title="Leader"
+            subtitle={selectedBlock.leader}
+            colSpan={2}
+            copy={true}
+          />
           <InfoBox
             title="Reward"
             subtitle={`${selectedBlock.rewardSol} SOL (${formatAsUsd(
               selectedBlock.rewardUsd
             )})`}
             colSpan={2}
+            copy={false}
           />
           <InfoBox
             title="Previous Block Hash"
             subtitle={selectedBlock.prevBlockHash}
             colSpan={4}
+            copy={false}
           />
         </div>
       </div>
