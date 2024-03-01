@@ -1,5 +1,7 @@
 import { useState, useEffect, FC } from "react";
 
+import CheckCircleIcon from "@/components/SvgIcon/CheckCircleIcon";
+
 interface ToastProps {
   message: string;
   key: number;
@@ -10,7 +12,7 @@ const Toast: FC<ToastProps> = ({ message, key }) => {
 
   useEffect(() => {
     setIsVisible(true);
-    const timer = setTimeout(() => setIsVisible(false), 5000);
+    // const timer = setTimeout(() => setIsVisible(false), 5000);
 
     return () => clearTimeout(timer);
   }, [message, key]);
@@ -18,8 +20,9 @@ const Toast: FC<ToastProps> = ({ message, key }) => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed top-5 right-5 rounded-full p-4 z-50 select-none text-xs text-peppermint bg-peppermint-opacity-10">
-      {message}
+    <div className="fixed flex top-6 right-8 rounded-full px-[18px] py-4 z-50 select-none text-xs text-peppermint bg-peppermint-opacity-10">
+      <CheckCircleIcon height={16} width={16} />
+      <div className="ml-[10px]">{message}</div>
     </div>
   );
 };
