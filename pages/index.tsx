@@ -8,6 +8,7 @@ import SearchIcon from "@/components/SvgIcon/SearchIcon";
 import PageHeading from "@/components/PageHeading";
 
 import truncateString from "@/helpers/truncateString";
+import roundDecimal from "@/helpers/roundDecimal";
 import formatAsUsd from "@/helpers/formatAsUsd";
 
 import BlocksState from "@/interfaces/blocksState";
@@ -113,7 +114,7 @@ export default function Home() {
           <ClearSearchButton />
         </div>
         <div>
-          <div className="grid grid-cols-3 md:grid-cols-11 gap-1 px-6 py-[10px] text-white text-opacity-60">
+          <div className="grid grid-cols-3 md:grid-cols-11 px-6 py-[10px] text-white text-opacity-60">
             <div className="col-span1 md:col-span-2 text-xs">Block hash</div>
             <div className="col-span1 md:col-span-2 text-xs">Slot</div>
             <div className="col-span1 md:col-span-2 text-xs">Timestamp</div>
@@ -124,7 +125,7 @@ export default function Home() {
           {activeBlocks.map((block, i) => (
             <div
               key={i}
-              className="grid grid-cols-3 md:grid-cols-11 gap-1 bg-white-opacity-02 hover:bg-white-opacity-05 px-6 py-[18px] rounded-2xl mb-1 text-white text-opacity-60 hover:text-opacity-100 hover:cursor-pointer"
+              className="grid grid-cols-3 md:grid-cols-11 bg-white-opacity-02 hover:bg-white-opacity-05 px-6 py-[18px] rounded-2xl mb-1 text-white text-opacity-60 hover:text-opacity-100 hover:cursor-pointer"
               onClick={() => handleRowClick(block)}
             >
               <div className="col-span1 md:col-span-2 text-sm text-picasso text-opacity-100 hover:text-picasso-opacity-50">
@@ -134,7 +135,7 @@ export default function Home() {
                 #{block.slot}
               </div>
               <div className="col-span1 md:col-span-2 text-sm">
-                {moment.unix(block.timestamp).fromNow()}
+                {moment(block.timestamp).fromNow()}
               </div>
               <div className="hidden md:flex md:col-span-1 text-sm">
                 {block.txCount}
@@ -147,7 +148,8 @@ export default function Home() {
                   <SolanaIcon height={9} width={9} />
                 </div>
                 <div>
-                  {block.rewardSol} SOL ({formatAsUsd(block.rewardUsd)})
+                  {roundDecimal(block.rewardSol, 2)} SOL (
+                  {formatAsUsd(block.rewardUsd)})
                 </div>
               </div>
             </div>

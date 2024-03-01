@@ -5,6 +5,7 @@ import moment from "moment";
 
 import getRelativeTime from "@/helpers/getRelativeTime";
 import truncateString from "@/helpers/truncateString";
+import roundDecimal from "@/helpers/roundDecimal";
 import formatAsUsd from "@/helpers/formatAsUsd";
 
 import SolanaIcon from "@/components/SvgIcon/SolanaIcon";
@@ -88,8 +89,7 @@ export default function Block() {
             {getRelativeTime(selectedBlock.timestamp)}
           </InfoBox>
           <InfoBox title="Date (UTC)" colSpan={1} copy={false}>
-            {moment
-              .unix(selectedBlock.timestamp)
+            {moment(selectedBlock.timestamp)
               .utc()
               .format("MMM D, YYYY HH:mm:ss")}
           </InfoBox>
@@ -115,7 +115,10 @@ export default function Block() {
                 <SolanaIcon height={9} width={9} />
               </div>
               <div className="ml-2">
-                <span className="mr-2">{`${selectedBlock.rewardSol} SOL`}</span>
+                <span className="mr-2">{`${roundDecimal(
+                  selectedBlock.rewardSol,
+                  9
+                )} SOL`}</span>
                 <span className="text-white text-opacity-60">
                   {`(${formatAsUsd(selectedBlock.rewardUsd)} @ ${formatAsUsd(
                     selectedBlock.solanaPriceUsd

@@ -2,7 +2,7 @@ interface Block {
   blockHash: string;
   prevBlockHash: string;
   slot: number;
-  timestamp: number;
+  timestamp: string;
   txCount: number;
   leader: string;
   rewardSol: number;
