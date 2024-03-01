@@ -45,7 +45,7 @@ export default function Block() {
   if (!selectedBlock) {
     return (
       <main className="flex justify-center pt-[72px] px-2 font-roboto-light">
-        <div className="flex flex-col w-[810px]">
+        <div className="flex flex-col w-[800px]">
           <PageHeading
             title="Block not found"
             subtitle="Please select a block from the list."
@@ -57,7 +57,7 @@ export default function Block() {
 
   return (
     <main className="flex justify-center pt-[72px] px-2 font-roboto-light">
-      <div className="flex flex-col w-[810px]">
+      <div className="flex flex-col w-[800px]">
         <div className="flex">
           <button
             className={`w-[72px] mr-6 flex justify-center items-center bg-white-opacity-02 py-6 rounded-3xl shadow-lg mb-10 hover:cursor-pointer hover:bg-white-opacity-05`}
@@ -93,7 +93,7 @@ export default function Block() {
           <InfoBox title="Transactions" colSpan={1} copy={false}>
             {String(selectedBlock.txCount)}
           </InfoBox>
-          <InfoBox title="Block hash" colSpan={4} copy={false}>
+          <InfoBox title="Block Hash" colSpan={4} copy={false}>
             {selectedBlock.blockHash}
           </InfoBox>
           <InfoBox

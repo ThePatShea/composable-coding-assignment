@@ -38,7 +38,7 @@ const InfoBox: React.FC<InfoBoxProps> = ({
           : colSpan === 3
           ? "col-span-3"
           : "col-span-4"
-      } bg-white-opacity-02 px-1 py-6 rounded-3xl shadow-lg`}
+      } bg-white-opacity-02 px-1 py-[23px] rounded-3xl shadow-lg`}
     >
       <h6 className="text-white text-center text-opacity-60 text-xs leading-none mb-3">
         {title}
@@ -46,7 +46,7 @@ const InfoBox: React.FC<InfoBoxProps> = ({
       <p className="mt-1 text-white text-sm text-center leading-none flex justify-center">
         <span>{children}</span>
         <span
-          className={`ml-2 hover:cursor-pointer copy-icon-container ${
+          className={`ml-[6px] hover:cursor-pointer copy-icon-container relative -top-[1px] ${
             copy === false && "hidden"
           }`}
           onClick={() => copySubtitle(subtitle ?? "")}
