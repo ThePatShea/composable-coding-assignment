@@ -1,7 +1,8 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useState } from "react";
 
 import copyTextToClipboard from "@/helpers/copyTextToClipboard";
 import CopyIcon from "@/components/SvgIcon/CopyIcon";
+import Toast from "@/components/Toast";
 
 interface InfoBoxProps {
   title: string;
@@ -18,6 +19,12 @@ const InfoBox: React.FC<InfoBoxProps> = ({
   copy = false,
   children,
 }) => {
+  const [toastMessage, setToastMessage] = useState("");
+
+  const showToast = () => {
+    setToastMessage("Copied to clipboard");
+  };
+
   return (
     <div
       className={`${
@@ -39,7 +46,10 @@ const InfoBox: React.FC<InfoBoxProps> = ({
           className={`ml-2 hover:cursor-pointer copy-icon-container ${
             copy === false && "hidden"
           }`}
-          onClick={() => copyTextToClipboard(subtitle ?? "")}
+          onClick={() => {
+            copyTextToClipboard(subtitle ?? "");
+            showToast();
+          }}
         >
           <span className="copy-icon-transparent">
             <CopyIcon width={17} height={16} fill="white" fillOpacity={0.6} />
@@ -49,6 +59,7 @@ const InfoBox: React.FC<InfoBoxProps> = ({
           </span>
         </span>
       </p>
+      {toastMessage && <Toast message={toastMessage} duration={5000} />}
     </div>
   );
 };
