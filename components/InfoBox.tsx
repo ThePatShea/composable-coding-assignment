@@ -21,7 +21,8 @@ const InfoBox: React.FC<InfoBoxProps> = ({
 }) => {
   const [toastMessage, setToastMessage] = useState("");
 
-  const showToast = () => {
+  const copySubtitle = (subtitle: string) => {
+    copyTextToClipboard(subtitle);
     setToastMessage("Copied to clipboard");
   };
 
@@ -46,10 +47,7 @@ const InfoBox: React.FC<InfoBoxProps> = ({
           className={`ml-2 hover:cursor-pointer copy-icon-container ${
             copy === false && "hidden"
           }`}
-          onClick={() => {
-            copyTextToClipboard(subtitle ?? "");
-            showToast();
-          }}
+          onClick={() => copySubtitle(subtitle ?? "")}
         >
           <span className="copy-icon-transparent">
             <CopyIcon width={17} height={16} fill="white" fillOpacity={0.6} />

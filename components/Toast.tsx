@@ -18,17 +18,7 @@ const Toast: FC<ToastProps> = ({ message, duration = 3000 }) => {
   if (!isVisible) return null;
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        top: "20px",
-        right: "20px",
-        background: "black",
-        color: "white",
-        padding: "10px",
-        zIndex: 1000,
-      }}
-    >
+    <div className="fixed top-5 right-5 bg-red-500 text-white p-2.5 z-50">
       {message}
     </div>
   );
