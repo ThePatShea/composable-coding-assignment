@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import Image from "next/image";
 import moment from "moment";
 
 import SolanaIcon from "@/components/SvgIcon/SolanaIcon";
@@ -15,8 +14,6 @@ import BlocksState from "@/interfaces/blocksState";
 import Block from "@/interfaces/block";
 
 import { selectBlock } from "@/reducers/blockSlice";
-
-import "@/app/globals.css";
 
 export default function Home() {
   const allBlocks = useSelector((state: BlocksState) => state.allBlocks);

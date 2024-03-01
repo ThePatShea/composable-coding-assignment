@@ -4,6 +4,8 @@ import { Provider } from "react-redux";
 
 import store from "@/data/store";
 
+import "@/app/globals.css";
+
 function App({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
