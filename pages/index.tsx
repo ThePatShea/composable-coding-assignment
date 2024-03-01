@@ -143,13 +143,15 @@ export default function Home() {
               <div className="hidden md:flex md:col-span-2 text-sm text-picasso text-opacity-100 hover:text-picasso-opacity-50">
                 {truncateString(block.leader)}
               </div>
-              <div className="hidden md:flex md:col-span-2 text-sm">
-                <div className="flex justify-center items-center mr-2 bg-black rounded-full w-4 h-4 relative top-[1px]">
-                  <SolanaIcon height={9} width={9} />
-                </div>
-                <div>
-                  {roundDecimal(block.rewardSol, 2)} SOL (
-                  {formatAsUsd(block.rewardUsd)})
+              <div className="hidden md:flex md:col-span-2 text-sm relative">
+                <div className="absolute flex w-[145px]">
+                  <div className="flex justify-center items-center mr-2 bg-black rounded-full w-4 h-4 relative top-[1px]">
+                    <SolanaIcon height={9} width={9} />
+                  </div>
+                  <div>
+                    {roundDecimal(block.rewardSol, 3)} SOL (
+                    {formatAsUsd(block.rewardUsd)})
+                  </div>
                 </div>
               </div>
             </div>
