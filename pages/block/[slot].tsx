@@ -9,8 +9,8 @@ import roundDecimal from "@/helpers/roundDecimal";
 import formatAsUsd from "@/helpers/formatAsUsd";
 
 import SolanaIcon from "@/components/SvgIcon/SolanaIcon";
-import BackIcon from "@/components/SvgIcon/BackIcon";
 import PageHeading from "@/components/PageHeading";
+import BackButton from "@/components/BackButton";
 import InfoBox from "@/components/InfoBox";
 
 import BlocksState from "@/interfaces/blocksState";
@@ -45,10 +45,15 @@ export default function Block() {
     return (
       <main className="flex justify-center pt-3 md:pt-[72px] px-2">
         <div className="flex flex-col w-[800px]">
-          <PageHeading
-            title="Block not found"
-            subtitle="Please select a block from the list."
-          />
+          <div className="flex">
+            <BackButton handleBackClick={handleBackClick} />
+            <div className="flex-grow">
+              <PageHeading
+                title="Block not found"
+                subtitle="Please select a block from the list."
+              />
+            </div>
+          </div>
         </div>
       </main>
     );
@@ -58,17 +63,7 @@ export default function Block() {
     <main className="flex justify-center pt-3 md:pt-[72px] px-2 pb-3">
       <div className="flex flex-col w-[800px] min-w-[350px]">
         <div className="flex mb-3 md:mb-10">
-          <button
-            className={`back-button h-full w-[72px] mr-3 md:mr-6 flex justify-center items-center bg-white-opacity-02 py-6 rounded-3xl shadow-lg hover:cursor-pointer hover:bg-white-opacity-05 group`}
-            onClick={handleBackClick}
-          >
-            <span className="block group-hover:hidden">
-              <BackIcon height={25} width={24} fill="white" fillOpacity={0.6} />
-            </span>
-            <span className="hidden group-hover:block">
-              <BackIcon height={25} width={24} fill="white" fillOpacity={1} />
-            </span>
-          </button>
+          <BackButton handleBackClick={handleBackClick} />
           <div className="flex-grow">
             <PageHeading
               title={`Block #${selectedBlock.slot}`}
