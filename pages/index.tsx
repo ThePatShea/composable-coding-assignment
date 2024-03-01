@@ -50,6 +50,13 @@ export default function Home() {
     setActiveBlocks(allBlocks);
   };
 
+  const handleSearchIconClick = () => {
+    const searchInput = document.getElementById("searchInput");
+    if (searchInput) {
+      searchInput.focus();
+    }
+  };
+
   const ClearSearchButton = () => (
     <button
       className={`absolute right-4 top-5 text-xl font-light text-white text-opacity-60 hover:text-opacity-100 focus:outline-none ${
@@ -86,13 +93,17 @@ export default function Home() {
           title={"Assignment block explorer"}
           subtitle="Check list of blocks and detailed view."
         />
-        <div className="relative mb-8">
-          <div className="absolute left-4 top-[21px]">
+        <div className="relative mb-8 hover:cursor-text group">
+          <div
+            className="absolute left-4 top-[21px]"
+            onClick={handleSearchIconClick}
+          >
             <SearchIcon height={16} width={16} fill={"white"} />
           </div>
           <input
             type="text"
-            className="w-full rounded-2xl bg-white-opacity-02 hover:bg-white-opacity-05 focus:bg-picasso-opacity-06 focus:bg-opacity-10 px-11 py-[18px] text-white text-sm placeholder-gray-50 placeholder-opacity-60 hover:placeholder-opacity-100 outline-none focus:border-solid border border-deep-catch focus:border-picasso-opacity-70 caret-picasso"
+            id="searchInput"
+            className="w-full rounded-2xl bg-white-opacity-02 group-hover:bg-white-opacity-05 focus:bg-picasso-opacity-06 focus:bg-opacity-10 px-11 py-[18px] text-white text-sm placeholder-gray-50 placeholder-opacity-60 group-hover:placeholder-opacity-100 outline-none focus:border-solid border border-deep-catch focus:border-picasso-opacity-70 caret-picasso"
             placeholder="Search for transactions, blocks, accounts"
             value={searchValue}
             onChange={handleSearch}
