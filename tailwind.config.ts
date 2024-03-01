@@ -25,6 +25,7 @@ const config: Config = {
         "picasso-opacity-06": "rgba(var(--picasso-rgb), 0.06)",
         "deep-catch": "var(--deep-catch)",
         peppermint: "var(--peppermint)",
+        "peppermint-opacity-80": "rgba(var(--peppermint-rgb), 0.8)",
         "peppermint-opacity-10": "rgba(var(--peppermint-rgb), 0.1)",
       },
     },
