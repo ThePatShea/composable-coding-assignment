@@ -19,11 +19,13 @@ const InfoBox: React.FC<InfoBoxProps> = ({
   copy = false,
   children,
 }) => {
-  const [toastMessage, setToastMessage] = useState("");
+  const [toastMessage, setToastMessage] = useState<string>("");
+  const [toastKey, setToastKey] = useState<number>(0);
 
   const copySubtitle = (subtitle: string) => {
     copyTextToClipboard(subtitle);
     setToastMessage("Copied to clipboard");
+    setToastKey((prevKey) => prevKey + 1);
   };
 
   return (
@@ -57,7 +59,7 @@ const InfoBox: React.FC<InfoBoxProps> = ({
           </span>
         </span>
       </p>
-      {toastMessage && <Toast message={toastMessage} duration={5000} />}
+      {toastMessage && <Toast message={toastMessage} key={toastKey} />}
     </div>
   );
 };
