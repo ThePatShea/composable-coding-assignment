@@ -23,16 +23,16 @@ body {
   caret-color: var(--picasso);
 }
 
-.copy-icon-container {
-  .copy-icon-solid {
+.back-button {
+  .back-icon-solid {
     display: none;
   }
 
   &:hover {
-    .copy-icon-solid {
+    .back-icon-solid {
       display: block;
     }
-    .copy-icon-transparent {
+    .back-icon-transparent {
       display: none;
     }
   }

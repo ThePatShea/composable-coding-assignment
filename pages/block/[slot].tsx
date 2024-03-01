@@ -4,18 +4,19 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import moment from "moment";
 
-import { selectBlock } from "@/reducers/blockSlice";
-
 import getRelativeTime from "@/helpers/getRelativeTime";
 import truncateString from "@/helpers/truncateString";
 import formatAsUsd from "@/helpers/formatAsUsd";
 
+import SolanaIcon from "@/components/SvgIcon/SolanaIcon";
 import BackIcon from "@/components/SvgIcon/BackIcon";
 import PageHeading from "@/components/PageHeading";
 import InfoBox from "@/components/InfoBox";
 
 import BlocksState from "@/interfaces/blocksState";
 import Block from "@/interfaces/block";
+
+import { selectBlock } from "@/reducers/blockSlice";
 
 import "@/app/globals.css";
 
@@ -60,10 +61,15 @@ export default function Block() {
       <div className="flex flex-col w-[800px]">
         <div className="flex">
           <button
-            className={`w-[72px] mr-6 flex justify-center items-center bg-white-opacity-02 py-6 rounded-3xl shadow-lg mb-10 hover:cursor-pointer hover:bg-white-opacity-05`}
+            className={`back-button w-[72px] mr-6 flex justify-center items-center bg-white-opacity-02 py-6 rounded-3xl shadow-lg mb-10 hover:cursor-pointer hover:bg-white-opacity-05`}
             onClick={handleBackClick}
           >
-            <BackIcon height={25} width={24} fill="white" fillOpacity={0.6} />
+            <span className="back-icon-transparent">
+              <BackIcon height={25} width={24} fill="white" fillOpacity={0.6} />
+            </span>
+            <span className="back-icon-solid">
+              <BackIcon height={25} width={24} fill="white" fillOpacity={1} />
+            </span>
           </button>
           <div className="flex-grow">
             <PageHeading
@@ -108,13 +114,10 @@ export default function Block() {
           </InfoBox>
           <InfoBox title="Reward" colSpan={2} copy={false}>
             <div className="flex">
-              <Image
-                src="/icons/solana.svg"
-                alt="Solana Icon"
-                width="9"
-                height="9"
-              />
-              <div className="ml-3">
+              <div className="flex justify-center items-center bg-black rounded-full w-4 h-4 relative -top-[1px]">
+                <SolanaIcon height={9} width={9} />
+              </div>
+              <div className="ml-2">
                 <span className="mr-2">{`${selectedBlock.rewardSol} SOL`}</span>
                 <span className="text-white text-opacity-60">
                   {`(${formatAsUsd(selectedBlock.rewardUsd)} @ ${formatAsUsd(

@@ -4,7 +4,8 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import moment from "moment";
 
-import { selectBlock } from "@/reducers/blockSlice";
+import SolanaIcon from "@/components/SvgIcon/SolanaIcon";
+import SearchIcon from "@/components/SvgIcon/SearchIcon";
 import PageHeading from "@/components/PageHeading";
 
 import truncateString from "@/helpers/truncateString";
@@ -12,6 +13,8 @@ import formatAsUsd from "@/helpers/formatAsUsd";
 
 import BlocksState from "@/interfaces/blocksState";
 import Block from "@/interfaces/block";
+
+import { selectBlock } from "@/reducers/blockSlice";
 
 import "@/app/globals.css";
 
@@ -88,12 +91,7 @@ export default function Home() {
         />
         <div className="relative mb-8">
           <div className="absolute left-4 top-[21px]">
-            <Image
-              src="/icons/search.svg"
-              alt="Search Icon"
-              width="16"
-              height="16"
-            />
+            <SearchIcon height={16} width={16} fill={"white"} />
           </div>
           <input
             type="text"
@@ -133,13 +131,8 @@ export default function Home() {
                 {truncateString(block.leader)}
               </div>
               <div className="col-span-2 text-sm flex">
-                <div className="flex justify-center mr-2 bg-black rounded-full w-4 h-4">
-                  <Image
-                    src="/icons/solana.svg"
-                    alt="Solana Icon"
-                    width="9"
-                    height="9"
-                  />
+                <div className="flex justify-center items-center mr-2 bg-black rounded-full w-4 h-4 relative top-[1px]">
+                  <SolanaIcon height={9} width={9} />
                 </div>
                 <div>
                   {block.rewardSol} SOL ({formatAsUsd(block.rewardUsd)})

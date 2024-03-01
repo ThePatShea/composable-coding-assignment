@@ -51,12 +51,7 @@ const InfoBox: React.FC<InfoBoxProps> = ({
           }`}
           onClick={() => copySubtitle(subtitle ?? "")}
         >
-          <span className="copy-icon-transparent">
-            <CopyIcon width={17} height={16} fill="white" fillOpacity={0.6} />
-          </span>
-          <span className="copy-icon-solid">
-            <CopyIcon width={17} height={16} fill="white" fillOpacity={1} />
-          </span>
+          <CopyIcon width={17} height={16} fill="white" />
         </span>
       </p>
       {toastMessage && <Toast message={toastMessage} key={toastKey} />}
