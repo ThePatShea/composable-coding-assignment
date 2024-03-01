@@ -22,18 +22,3 @@ body {
 .caret-picasso {
   caret-color: var(--picasso);
 }
-
-.back-button {
-  .back-icon-solid {
-    display: none;
-  }
-
-  &:hover {
-    .back-icon-solid {
-      display: block;
-    }
-    .back-icon-transparent {
-      display: none;
-    }
-  }
-}

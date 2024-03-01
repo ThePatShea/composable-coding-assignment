@@ -58,13 +58,13 @@ export default function Block() {
       <div className="flex flex-col w-[800px] min-w-[350px]">
         <div className="flex mb-3 md:mb-10">
           <button
-            className={`back-button h-full w-[72px] mr-3 md:mr-6 flex justify-center items-center bg-white-opacity-02 py-6 rounded-3xl shadow-lg hover:cursor-pointer hover:bg-white-opacity-05`}
+            className={`back-button h-full w-[72px] mr-3 md:mr-6 flex justify-center items-center bg-white-opacity-02 py-6 rounded-3xl shadow-lg hover:cursor-pointer hover:bg-white-opacity-05 group`}
             onClick={handleBackClick}
           >
-            <span className="back-icon-transparent">
+            <span className="block group-hover:hidden">
               <BackIcon height={25} width={24} fill="white" fillOpacity={0.6} />
             </span>
-            <span className="back-icon-solid">
+            <span className="hidden group-hover:block">
               <BackIcon height={25} width={24} fill="white" fillOpacity={1} />
             </span>
           </button>
