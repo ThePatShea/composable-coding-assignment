@@ -1,13 +1,8 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@font-face {
-  font-family: "Roboto Light", sans-serif;
-  src: url("/fonts/Roboto/Roboto-Light.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal;
-}
 
 :root {
   --deep-catch: #0f0f0f;
@@ -16,6 +11,7 @@
   --picasso: rgb(var(--picasso-rgb));
   --peppermint-rgb: 129, 255, 217;
   --peppermint: rgb(var(--peppermint-rgb));
+  --font-roboto: "Roboto", sans-serif;
 }
 
 body {
