@@ -106,9 +106,24 @@ export default function Block() {
               {truncateString(selectedBlock.leader)}
             </span>
           </InfoBox>
-          <InfoBox title="Reward" colSpan={2} copy={false}>{`${
-            selectedBlock.rewardSol
-          } SOL (${formatAsUsd(selectedBlock.rewardUsd)})`}</InfoBox>
+          <InfoBox title="Reward" colSpan={2} copy={false}>
+            <div className="flex">
+              <Image
+                src="/icons/solana.svg"
+                alt="Solana Icon"
+                width="9"
+                height="9"
+              />
+              <div className="ml-3">
+                <span className="mr-2">{`${selectedBlock.rewardSol} SOL`}</span>
+                <span className="text-white text-opacity-60">
+                  {`(${formatAsUsd(selectedBlock.rewardUsd)} @ ${formatAsUsd(
+                    selectedBlock.solanaPriceUsd
+                  )})`}
+                </span>
+              </div>
+            </div>
+          </InfoBox>
           <InfoBox title="Previous Block Hash" colSpan={4} copy={false}>
             {selectedBlock.prevBlockHash}
           </InfoBox>

@@ -7,7 +7,8 @@
     "txCount": 697,
     "leader": "Cogent51kHgGLHr7zpkpRjGYFXM57LgjHjDdqXd4ypdA",
     "rewardSol": 0.2,
-    "rewardUsd": 0.12
+    "rewardUsd": 0.12,
+    "solanaPriceUsd": 107.6
   },
   {
     "blockHash": "7tPLxy5ZPF5xL5Bh3gXtD6T1KvhFH5R8M5sagQx6MeYG",
@@ -17,7 +18,8 @@
     "txCount": 697,
     "leader": "Crane5j2D4yD5wZkP3fSJq2XWzR3CvDyW9HWXn2a4MEA",
     "rewardSol": 0.3,
-    "rewardUsd": 0.18
+    "rewardUsd": 0.18,
+    "solanaPriceUsd": 107.6
   },
   {
     "blockHash": "2fG45vV8Qx3oX43vqjXrb25Bj6sR8j5XwFqHs5Rxd7EJ",
@@ -27,7 +29,8 @@
     "txCount": 697,
     "leader": "Bison9X1fZsV4sJkqdg4DmVQ9QGV2rLZd4C3XpZgMd8",
     "rewardSol": 0.4,
-    "rewardUsd": 0.24
+    "rewardUsd": 0.24,
+    "solanaPriceUsd": 107.6
   },
   {
     "blockHash": "3jW8sj3n5LkL8o5HnTJYTh4tR8sVkPJ5ZQ8s4V3s5tKQ",
@@ -37,7 +40,8 @@
     "txCount": 697,
     "leader": "Snake7qWER6x6v8qV1FWP7Q9pZs5tLQ8E3V3sKtJL",
     "rewardSol": 0.5,
-    "rewardUsd": 0.3
+    "rewardUsd": 0.3,
+    "solanaPriceUsd": 107.6
   },
   {
     "blockHash": "6uF5xq8QW3hJx9h8nTJYTh4tR8sVkPJ5ZQ8s4V3s5tKQ",
@@ -47,7 +51,8 @@
     "txCount": 697,
     "leader": "Dragon3sLkL8o5HnTJYTh4tR8sVkPJ5ZQ8s4V3s5tKQ",
     "rewardSol": 0.6,
-    "rewardUsd": 0.36
+    "rewardUsd": 0.36,
+    "solanaPriceUsd": 107.6
   },
   {
     "blockHash": "8kP3sJq2XWzR3CvDyW9HWXn2a4MEAGzscbXXP1EKg1bQ",
@@ -57,7 +62,8 @@
     "txCount": 697,
     "leader": "Hawk9Q9QGV2rLZd4C3XpZgMd8Bison9X1fZsV4sJkqdg",
     "rewardSol": 0.7,
-    "rewardUsd": 0.42
+    "rewardUsd": 0.42,
+    "solanaPriceUsd": 107.6
   },
   {
     "blockHash": "9s5tLQ8E3V3sKtJLlwudi7qWER6x6v8qV1FWP7Q9pZs5t",
@@ -67,7 +73,8 @@
     "txCount": 697,
     "leader": "Jaguar1fZsV4sJkqdg4DmVQ9QGV2rLZd4C3XpZgMd8",
     "rewardSol": 0.8,
-    "rewardUsd": 0.48
+    "rewardUsd": 0.48,
+    "solanaPriceUsd": 107.6
   },
   {
     "blockHash": "GzscbXXP1EKg1bQ1D8f9SUa3CMpyKKRoXHGsPn29VqcG",
@@ -77,7 +84,8 @@
     "txCount": 697,
     "leader": "Cogent51kHgGLHr7zpkpRjGYFXM57LgjHjDdqXd4ypdA",
     "rewardSol": 0.2,
-    "rewardUsd": 0.12
+    "rewardUsd": 0.12,
+    "solanaPriceUsd": 107.6
   },
   {
     "blockHash": "7tPLxy5ZPF5xL5Bh3gXtD6T1KvhFH5R8M5sagQx6MeYG",
@@ -87,7 +95,8 @@
     "txCount": 697,
     "leader": "Crane5j2D4yD5wZkP3fSJq2XWzR3CvDyW9HWXn2a4MEA",
     "rewardSol": 0.3,
-    "rewardUsd": 0.18
+    "rewardUsd": 0.18,
+    "solanaPriceUsd": 107.6
   },
   {
     "blockHash": "2fG45vV8Qx3oX43vqjXrb25Bj6sR8j5XwFqHs5Rxd7EJ",
@@ -97,7 +106,8 @@
     "txCount": 697,
     "leader": "Bison9X1fZsV4sJkqdg4DmVQ9QGV2rLZd4C3XpZgMd8",
     "rewardSol": 0.4,
-    "rewardUsd": 0.24
+    "rewardUsd": 0.24,
+    "solanaPriceUsd": 107.6
   },
   {
     "blockHash": "3jW8sj3n5LkL8o5HnTJYTh4tR8sVkPJ5ZQ8s4V3s5tKQ",
@@ -107,7 +117,8 @@
     "txCount": 697,
     "leader": "Snake7qWER6x6v8qV1FWP7Q9pZs5tLQ8E3V3sKtJL",
     "rewardSol": 0.5,
-    "rewardUsd": 0.3
+    "rewardUsd": 0.3,
+    "solanaPriceUsd": 107.6
   },
   {
     "blockHash": "6uF5xq8QW3hJx9h8nTJYTh4tR8sVkPJ5ZQ8s4V3s5tKQ",
@@ -117,6 +128,7 @@
     "txCount": 697,
     "leader": "Dragon3sLkL8o5HnTJYTh4tR8sVkPJ5ZQ8s4V3s5tKQ",
     "rewardSol": 0.6,
-    "rewardUsd": 0.36
+    "rewardUsd": 0.36,
+    "solanaPriceUsd": 107.6
   }
 ]

@@ -7,6 +7,7 @@ interface Block {
   leader: string;
   rewardSol: number;
   rewardUsd: number;
+  solanaPriceUsd: number;
 }
 
 export default Block;
