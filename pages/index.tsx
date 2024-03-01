@@ -87,13 +87,15 @@ export default function Home() {
   };
 
   return (
-    <main className="flex justify-center pt-[72px] px-2 font-roboto-light">
-      <div className="flex flex-col w-[800px]">
-        <PageHeading
-          title={"Assignment block explorer"}
-          subtitle="Check list of blocks and detailed view."
-        />
-        <div className="relative mb-8 hover:cursor-text group">
+    <main className="flex justify-center pt-3 md:pt-[72px] px-2 pb-3">
+      <div className="flex flex-col w-[800px] min-w-[350px]">
+        <div className="mb-3 md:mb-10">
+          <PageHeading
+            title={"Assignment block explorer"}
+            subtitle="Check list of blocks and detailed view."
+          />
+        </div>
+        <div className="relative mb-2 md:mb-8 hover:cursor-pointer">
           <div
             className="absolute left-4 top-[21px]"
             onClick={handleSearchIconClick}
@@ -103,7 +105,7 @@ export default function Home() {
           <input
             type="text"
             id="searchInput"
-            className="w-full rounded-2xl bg-white-opacity-02 group-hover:bg-white-opacity-05 focus:bg-picasso-opacity-06 focus:bg-opacity-10 px-11 py-[18px] text-white text-sm placeholder-gray-50 placeholder-opacity-60 group-hover:placeholder-opacity-100 outline-none focus:border-solid border border-deep-catch focus:border-picasso-opacity-70 caret-picasso"
+            className="w-full rounded-2xl bg-white-opacity-02 hover:bg-white-opacity-05 focus:bg-picasso-opacity-06 focus:bg-opacity-10 px-11 py-[18px] text-white text-sm placeholder-gray-50 placeholder-opacity-60 group-hover:placeholder-opacity-100 outline-none focus:border-solid border border-deep-catch focus:border-picasso-opacity-70 caret-picasso"
             placeholder="Search for transactions, blocks, accounts"
             value={searchValue}
             onChange={handleSearch}
@@ -111,34 +113,36 @@ export default function Home() {
           <ClearSearchButton />
         </div>
         <div>
-          <div className="grid grid-cols-11 gap-1 px-6 py-[10px] text-white text-opacity-60">
-            <div className="col-span-2 text-xs">Block hash</div>
-            <div className="col-span-2 text-xs">Slot</div>
-            <div className="col-span-2 text-xs">Timestamp</div>
-            <div className="col-span-1 text-xs">Tx count</div>
-            <div className="col-span-2 text-xs">Leader</div>
-            <div className="col-span-2 text-xs">Reward</div>
+          <div className="grid grid-cols-3 md:grid-cols-11 gap-1 px-6 py-[10px] text-white text-opacity-60">
+            <div className="col-span1 md:col-span-2 text-xs">Block hash</div>
+            <div className="col-span1 md:col-span-2 text-xs">Slot</div>
+            <div className="col-span1 md:col-span-2 text-xs">Timestamp</div>
+            <div className="hidden md:flex md:col-span-1 text-xs">Tx count</div>
+            <div className="hidden md:flex md:col-span-2 text-xs">Leader</div>
+            <div className="hidden md:flex md:col-span-2 text-xs">Reward</div>
           </div>
           {activeBlocks.map((block, i) => (
             <div
               key={i}
-              className="grid grid-cols-11 gap-1 bg-white-opacity-02 hover:bg-white-opacity-05 px-6 py-[18px] rounded-2xl mb-1 text-white text-opacity-60 hover:text-opacity-100 hover:cursor-pointer"
+              className="grid grid-cols-3 md:grid-cols-11 gap-1 bg-white-opacity-02 hover:bg-white-opacity-05 px-6 py-[18px] rounded-2xl mb-1 text-white text-opacity-60 hover:text-opacity-100 hover:cursor-pointer"
               onClick={() => handleRowClick(block)}
             >
-              <div className="col-span-2 text-sm text-picasso text-opacity-100 hover:text-picasso-opacity-50">
+              <div className="col-span1 md:col-span-2 text-sm text-picasso text-opacity-100 hover:text-picasso-opacity-50">
                 {truncateString(block.blockHash)}
               </div>
-              <div className="col-span-2 text-sm text-picasso text-opacity-100 hover:text-picasso-opacity-50">
+              <div className="col-span1 md:col-span-2 text-sm text-picasso text-opacity-100 hover:text-picasso-opacity-50">
                 #{block.slot}
               </div>
-              <div className="col-span-2 text-sm">
+              <div className="col-span1 md:col-span-2 text-sm">
                 {moment.unix(block.timestamp).fromNow()}
               </div>
-              <div className="col-span-1 text-sm">{block.txCount}</div>
-              <div className="col-span-2 text-sm text-picasso text-opacity-100 hover:text-picasso-opacity-50">
+              <div className="hidden md:flex md:col-span-1 text-sm">
+                {block.txCount}
+              </div>
+              <div className="hidden md:flex md:col-span-2 text-sm text-picasso text-opacity-100 hover:text-picasso-opacity-50">
                 {truncateString(block.leader)}
               </div>
-              <div className="col-span-2 text-sm flex">
+              <div className="hidden md:flex md:col-span-2 text-sm">
                 <div className="flex justify-center items-center mr-2 bg-black rounded-full w-4 h-4 relative top-[1px]">
                   <SolanaIcon height={9} width={9} />
                 </div>
