@@ -18,7 +18,7 @@ const Toast: FC<ToastProps> = ({ message, key }) => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed top-5 right-5 bg-red-500 text-white p-2.5 z-50 select-none">
+    <div className="fixed top-5 right-5 rounded-full p-4 z-50 select-none text-xs text-peppermint bg-peppermint-opacity-10">
       {message}
     </div>
   );
