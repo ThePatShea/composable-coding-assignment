@@ -6,6 +6,8 @@ import moment from "moment";
 
 import { selectBlock } from "@/reducers/blockSlice";
 import PageHeading from "@/components/PageHeading";
+
+import truncateString from "@/helpers/truncateString";
 import formatAsUsd from "@/helpers/formatAsUsd";
 
 import BlocksState from "@/interfaces/blocksState";
@@ -117,8 +119,8 @@ export default function Home() {
               className="grid grid-cols-6 gap-1 bg-white-opacity-02 hover:bg-white-opacity-05 px-6 py-[18px] rounded-2xl mb-1 text-white text-opacity-60 hover:text-opacity-100 hover:cursor-pointer"
               onClick={() => handleRowClick(block)}
             >
-              <div className="col-span-1 text-sm text-picasso text-opacity-100 hover:text-picasso-opacity-50 truncate">
-                {block.blockHash}
+              <div className="col-span-1 text-sm text-picasso text-opacity-100 hover:text-picasso-opacity-50">
+                {truncateString(block.blockHash)}
               </div>
               <div className="col-span-1 text-sm text-picasso text-opacity-100 hover:text-picasso-opacity-50">
                 #{block.slot}
@@ -127,8 +129,8 @@ export default function Home() {
                 {moment.unix(block.timestamp).fromNow()}
               </div>
               <div className="col-span-1 text-sm">{block.txCount}</div>
-              <div className="col-span-1 text-sm text-picasso text-opacity-100 hover:text-picasso-opacity-50 truncate">
-                {block.leader}
+              <div className="col-span-1 text-sm text-picasso text-opacity-100 hover:text-picasso-opacity-50">
+                {truncateString(block.leader)}
               </div>
               <div className="col-span-1 text-sm flex">
                 <div className="flex justify-center mr-2 bg-black rounded-full w-4 h-4">

@@ -1,12 +1,14 @@
-import copyTextToClipboard from "@/helpers/copyTextToClipboard";
+import React, { ReactNode } from "react";
 
+import copyTextToClipboard from "@/helpers/copyTextToClipboard";
 import CopyIcon from "@/components/SvgIcon/CopyIcon";
 
 interface InfoBoxProps {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   colSpan: number;
   copy: boolean;
+  children: ReactNode;
 }
 
 const InfoBox: React.FC<InfoBoxProps> = ({
@@ -14,6 +16,7 @@ const InfoBox: React.FC<InfoBoxProps> = ({
   subtitle,
   colSpan,
   copy = false,
+  children,
 }) => {
   return (
     <div
@@ -31,12 +34,12 @@ const InfoBox: React.FC<InfoBoxProps> = ({
         {title}
       </h6>
       <p className="mt-1 text-white text-sm text-center leading-none flex justify-center">
-        <span>{subtitle}</span>
+        <span>{children}</span>
         <span
           className={`ml-2 hover:cursor-pointer copy-icon-container ${
             copy === false && "hidden"
           }`}
-          onClick={() => copyTextToClipboard(subtitle)}
+          onClick={() => copyTextToClipboard(subtitle ?? "")}
         >
           <span className="copy-icon-transparent">
             <CopyIcon width={17} height={16} fill="white" fillOpacity={0.6} />

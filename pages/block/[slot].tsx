@@ -7,6 +7,7 @@ import moment from "moment";
 import { selectBlock } from "@/reducers/blockSlice";
 
 import getRelativeTime from "@/helpers/getRelativeTime";
+import truncateString from "@/helpers/truncateString";
 import formatAsUsd from "@/helpers/formatAsUsd";
 
 import BackIcon from "@/components/SvgIcon/BackIcon";
@@ -77,54 +78,40 @@ export default function Block() {
             subtitle={`#${selectedBlock.slot}`}
             colSpan={1}
             copy={true}
-          />
-          <InfoBox
-            title="Timestamp"
-            subtitle={getRelativeTime(selectedBlock.timestamp)}
-            colSpan={1}
-            copy={false}
-          />
-          <InfoBox
-            title="Date (UTC)"
-            subtitle={moment
+          >
+            {`#${selectedBlock.slot}`}
+          </InfoBox>
+          <InfoBox title="Timestamp" colSpan={1} copy={false}>
+            {getRelativeTime(selectedBlock.timestamp)}
+          </InfoBox>
+          <InfoBox title="Date (UTC)" colSpan={1} copy={false}>
+            {moment
               .unix(selectedBlock.timestamp)
               .utc()
               .format("MMM D, YYYY HH:mm:ss")}
-            colSpan={1}
-            copy={false}
-          />
-          <InfoBox
-            title="Transactions"
-            subtitle={String(selectedBlock.txCount)}
-            colSpan={1}
-            copy={false}
-          />
-          <InfoBox
-            title="Block hash"
-            subtitle={selectedBlock.blockHash}
-            colSpan={4}
-            copy={false}
-          />
+          </InfoBox>
+          <InfoBox title="Transactions" colSpan={1} copy={false}>
+            {String(selectedBlock.txCount)}
+          </InfoBox>
+          <InfoBox title="Block hash" colSpan={4} copy={false}>
+            {selectedBlock.blockHash}
+          </InfoBox>
           <InfoBox
             title="Leader"
             subtitle={selectedBlock.leader}
             colSpan={2}
             copy={true}
-          />
-          <InfoBox
-            title="Reward"
-            subtitle={`${selectedBlock.rewardSol} SOL (${formatAsUsd(
-              selectedBlock.rewardUsd
-            )})`}
-            colSpan={2}
-            copy={false}
-          />
-          <InfoBox
-            title="Previous Block Hash"
-            subtitle={selectedBlock.prevBlockHash}
-            colSpan={4}
-            copy={false}
-          />
+          >
+            <span className="text-picasso">
+              {truncateString(selectedBlock.leader)}
+            </span>
+          </InfoBox>
+          <InfoBox title="Reward" colSpan={2} copy={false}>{`${
+            selectedBlock.rewardSol
+          } SOL (${formatAsUsd(selectedBlock.rewardUsd)})`}</InfoBox>
+          <InfoBox title="Previous Block Hash" colSpan={4} copy={false}>
+            {selectedBlock.prevBlockHash}
+          </InfoBox>
         </div>
       </div>
     </main>
