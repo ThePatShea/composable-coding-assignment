@@ -18,7 +18,3 @@ body {
   background: var(--deep-catch);
   color: var(--white);
 }
-
-.caret-picasso {
-  caret-color: var(--picasso);
-}
