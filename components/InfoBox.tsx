@@ -38,9 +38,9 @@ const InfoBox: React.FC<InfoBoxProps> = ({
           : colSpan === 3
           ? "col-span-3"
           : "col-span-4"
-      } bg-white-opacity-02 px-1 py-[23px] rounded-3xl shadow-lg`}
+      } bg-white-opacity-02 px-1 py-[22px] rounded-3xl shadow-lg`}
     >
-      <h6 className="text-white text-center text-opacity-60 text-xs leading-none mb-3">
+      <h6 className="text-white text-center text-opacity-60 text-xs leading-none mb-[14px]">
         {title}
       </h6>
       <p className="mt-1 text-white text-sm text-center leading-none flex justify-center">

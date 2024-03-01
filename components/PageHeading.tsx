@@ -17,7 +17,7 @@ const PageHeading: React.FC<PageHeadingProps> = ({ title, subtitle }) => {
         />
       </div>
       <div>
-        <h1 className="text-white text-2xl font-medium leading-none mt-1 mb-3">
+        <h1 className="text-white text-2xl font-medium leading-none mt-[2px] mb-[14px]">
           {title}
         </h1>
         <h6 className="text-white text-opacity-60 text-sm font-medium leading-none">
