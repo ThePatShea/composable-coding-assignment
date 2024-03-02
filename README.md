@@ -2,6 +2,8 @@
 
 Live Demo: [https://composable-coding-assignment.vercel.app/](https://composable-coding-assignment.vercel.app/)
 
+---
+
 1. Clone the Github repo:
 
 ```bash
