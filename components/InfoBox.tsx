@@ -44,7 +44,7 @@ const InfoBox = ({
       <h6 className="text-white text-center text-opacity-60 text-xs leading-none mb-[14px]">
         {title}
       </h6>
-      <p className="mt-1 text-white text-sm text-center leading-none flex justify-center">
+      <div className="mt-1 text-white text-sm text-center leading-none flex justify-center">
         <span className="truncate">{children}</span>
         <span
           className={`ml-[6px] hover:cursor-pointer copy-icon-container relative -top-[1px] ${
@@ -54,7 +54,7 @@ const InfoBox = ({
         >
           <CopyIcon width={17} height={16} fill="white" />
         </span>
-      </p>
+      </div>
       {toastMessage && <Toast message={toastMessage} toastKey={toastKey} />}
     </div>
   );
