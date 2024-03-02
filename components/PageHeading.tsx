@@ -12,7 +12,7 @@ const PageHeading = ({ title, subtitle }: PageHeadingProps) => {
         <SolanaIcon height={34} width={34} />
       </div>
       <div>
-        <h1 className="text-white text-xl md:text-2xl font-medium leading-none mb-2">
+        <h1 className="text-white text-xl md:text-2xl font-medium leading-none mb-2 mt-[6px] md:mt-0">
           {title}
         </h1>
         <h6 className="text-white text-opacity-60 text-sm font-medium leading-none">
