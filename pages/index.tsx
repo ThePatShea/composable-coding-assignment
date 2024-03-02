@@ -1,8 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import moment from "moment";
 
+import ClearSearchButton from "@/components/ClearSearchButton";
 import SolanaIcon from "@/components/SvgIcon/SolanaIcon";
 import SearchIcon from "@/components/SvgIcon/SearchIcon";
 import PageHeading from "@/components/PageHeading";
@@ -11,18 +12,21 @@ import truncateString from "@/helpers/truncateString";
 import roundDecimal from "@/helpers/roundDecimal";
 import formatAsUsd from "@/helpers/formatAsUsd";
 
-import BlocksState from "@/interfaces/blocksState";
-import Block from "@/interfaces/block";
+import type { AppDispatch } from "@/data/store";
+import { RootState } from "@/data/store";
 
 import { selectBlock } from "@/reducers/blockSlice";
+import Block from "@/interfaces/block";
 
 export default function Home() {
-  const allBlocks = useSelector((state: BlocksState) => state.allBlocks);
+  const allBlocks: Block[] = useSelector(
+    (state: RootState) => state.block.allBlocks
+  );
 
   const [activeBlocks, setActiveBlocks] = useState<Block[]>(allBlocks);
   const [searchValue, setSearchValue] = useState<string>("");
 
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
   const router = useRouter();
 
   useEffect(() => {
@@ -51,36 +55,11 @@ export default function Home() {
     setActiveBlocks(allBlocks);
   };
 
-  const handleSearchIconClick = () => {
-    const searchInput = document.getElementById("searchInput");
-    if (searchInput) {
-      searchInput.focus();
-    }
-  };
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
-  const ClearSearchButton = () => (
-    <button
-      className={`absolute right-4 top-5 text-xl font-light text-white text-opacity-60 hover:text-opacity-100 focus:outline-none ${
-        searchValue === "" && "hidden"
-      }`}
-      onClick={handleClearSearch}
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-        className="w-[18px] h-[18px]"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M6 18 18 6M6 6l12 12"
-        />
-      </svg>
-    </button>
-  );
+  const handleSearchIconClick = () => {
+    searchInputRef.current?.focus();
+  };
 
   const handleRowClick = (block: Block) => {
     dispatch(selectBlock(block));
@@ -105,13 +84,16 @@ export default function Home() {
           </div>
           <input
             type="text"
-            id="searchInput"
+            ref={searchInputRef}
             className="w-full rounded-2xl bg-white-opacity-02 hover:bg-white-opacity-05 focus:bg-picasso-opacity-06 focus:bg-opacity-10 px-11 py-[18px] text-white text-sm placeholder-gray-50 placeholder-opacity-60 hover:placeholder-opacity-100 outline-none focus:border-solid border border-deep-catch focus:border-picasso-opacity-70 caret-picasso"
             placeholder="Search for transactions, blocks, accounts"
             value={searchValue}
             onChange={handleSearch}
           />
-          <ClearSearchButton />
+          <ClearSearchButton
+            searchValue={searchValue}
+            handleClearSearch={handleClearSearch}
+          />
         </div>
         <div>
           <div className="grid grid-cols-3 md:grid-cols-11 px-6 py-[10px] text-white text-opacity-60">
@@ -122,9 +104,9 @@ export default function Home() {
             <div className="hidden md:flex md:col-span-2 text-xs">Leader</div>
             <div className="hidden md:flex md:col-span-2 text-xs">Reward</div>
           </div>
-          {activeBlocks.map((block, i) => (
+          {activeBlocks.map((block) => (
             <div
-              key={i}
+              key={block.slot}
               className="grid grid-cols-3 md:grid-cols-11 bg-white-opacity-02 hover:bg-white-opacity-05 px-6 py-[18px] rounded-2xl mb-1 text-white text-opacity-60 hover:text-opacity-100 hover:cursor-pointer"
               onClick={() => handleRowClick(block)}
             >

@@ -1,12 +1,12 @@
 import moment from "moment";
 
-const getRelativeTime = (date: string) => {
-  const now = moment();
-  const then = moment(date);
-  const seconds = now.diff(then, "seconds");
-  const minutes = now.diff(then, "minutes");
-  const hours = now.diff(then, "hours");
-  const days = now.diff(then, "days");
+const getRelativeTime = (date: string): string => {
+  const now: moment.Moment = moment();
+  const then: moment.Moment = moment(date);
+  const seconds: number = now.diff(then, "seconds");
+  const minutes: number = now.diff(then, "minutes");
+  const hours: number = now.diff(then, "hours");
+  const days: number = now.diff(then, "days");
 
   const relativeTime: string =
     (days > 0 ? `${days}d ` : ``) +

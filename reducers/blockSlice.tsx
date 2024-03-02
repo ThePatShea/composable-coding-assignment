@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import initialBlocks from "@/data/blocks.json";
 import BlocksState from "@/interfaces/blocksState";
 import Block from "@/interfaces/block";
 
+import initialBlocks from "@/data/blocks.json";
+
 const initialState: BlocksState = {
-  allBlocks: initialBlocks,
+  allBlocks: initialBlocks as Block[],
   selectedBlock: null,
 };
 

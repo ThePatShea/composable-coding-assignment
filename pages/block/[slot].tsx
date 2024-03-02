@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import moment from "moment";
 
 import getRelativeTime from "@/helpers/getRelativeTime";
@@ -13,25 +13,29 @@ import PageHeading from "@/components/PageHeading";
 import BackButton from "@/components/BackButton";
 import InfoBox from "@/components/InfoBox";
 
-import BlocksState from "@/interfaces/blocksState";
-import Block from "@/interfaces/block";
+import type { AppDispatch } from "@/data/store";
+import { RootState } from "@/data/store";
 
 import { selectBlock } from "@/reducers/blockSlice";
+import Block from "@/interfaces/block";
 
 export default function Block() {
-  const allBlocks = useSelector((state: BlocksState) => state.allBlocks);
-  const selectedBlock = useSelector(
-    (state: BlocksState) => state.selectedBlock
+  const allBlocks: Block[] = useSelector(
+    (state: RootState) => state.block.allBlocks
+  );
+  const selectedBlock: Block | null = useSelector(
+    (state: RootState) => state.block.selectedBlock
   );
 
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
   const router = useRouter();
 
   useEffect(() => {
     if (selectedBlock) return;
 
-    const slot = router.query.slot as string;
-    const block = allBlocks.find((block) => block.slot === +slot) || null;
+    const slot: string = router.query.slot as string;
+    const block: Block | null =
+      allBlocks.find((block) => block.slot === +slot) || null;
 
     dispatch(selectBlock(block));
   }, [router, allBlocks, dispatch, selectedBlock]);
