@@ -75,7 +75,7 @@ export default function Home() {
             subtitle="Check list of blocks and detailed view."
           />
         </div>
-        <div className="relative mb-2 md:mb-8 hover:cursor-pointer">
+        <div className="relative mb-2 md:mb-[30px] hover:cursor-pointer">
           <div
             className="absolute left-4 top-[21px]"
             onClick={handleSearchIconClick}

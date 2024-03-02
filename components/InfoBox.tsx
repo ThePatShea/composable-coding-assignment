@@ -47,7 +47,7 @@ const InfoBox = ({
       <div className="mt-1 text-white text-sm text-center leading-none flex justify-center">
         <span className="truncate">{children}</span>
         <span
-          className={`ml-[6px] hover:cursor-pointer copy-icon-container relative -top-[1px] ${
+          className={`ml-[6px] hover:cursor-pointer copy-icon-container relative -top-[2px] ${
             copy === false && "hidden"
           }`}
           onClick={() => subtitle && copySubtitle(subtitle)}
