@@ -3,7 +3,7 @@ interface CheckCircleIconProps {
   width: number;
 }
 
-const CheckCircleIcon: React.FC<CheckCircleIconProps> = ({ height, width }) => (
+const CheckCircleIcon = ({ height, width }: CheckCircleIconProps) => (
   <svg
     width={width}
     height={height}

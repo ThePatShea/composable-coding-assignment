@@ -4,7 +4,7 @@ interface CopyIconProps {
   fill: string;
 }
 
-const CopyIcon: React.FC<CopyIconProps> = ({ height, width, fill }) => (
+const CopyIcon = ({ height, width, fill }: CopyIconProps) => (
   <svg
     width={width}
     height={height}

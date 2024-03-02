@@ -80,18 +80,18 @@ export default function Block() {
           >
             {`#${selectedBlock.slot}`}
           </InfoBox>
-          <InfoBox title="Timestamp" colSpan={1} copy={false}>
+          <InfoBox title="Timestamp" colSpan={1}>
             {getRelativeTime(selectedBlock.timestamp)}
           </InfoBox>
-          <InfoBox title="Date (UTC)" colSpan={1} copy={false}>
+          <InfoBox title="Date (UTC)" colSpan={1}>
             {moment(selectedBlock.timestamp)
               .utc()
               .format("MMM D, YYYY HH:mm:ss")}
           </InfoBox>
-          <InfoBox title="Transactions" colSpan={1} copy={false}>
+          <InfoBox title="Transactions" colSpan={1}>
             {String(selectedBlock.txCount)}
           </InfoBox>
-          <InfoBox title="Block Hash" colSpan={4} copy={false}>
+          <InfoBox title="Block Hash" colSpan={4}>
             {selectedBlock.blockHash}
           </InfoBox>
           <InfoBox
@@ -104,7 +104,7 @@ export default function Block() {
               {truncateString(selectedBlock.leader)}
             </span>
           </InfoBox>
-          <InfoBox title="Reward" colSpan={2} copy={false}>
+          <InfoBox title="Reward" colSpan={2}>
             <div className="flex">
               <div className="flex justify-center items-center bg-black rounded-full w-4 h-4 relative -top-[1px]">
                 <SolanaIcon height={9} width={9} />
@@ -122,7 +122,7 @@ export default function Block() {
               </div>
             </div>
           </InfoBox>
-          <InfoBox title="Previous Block Hash" colSpan={4} copy={false}>
+          <InfoBox title="Previous Block Hash" colSpan={4}>
             {selectedBlock.prevBlockHash}
           </InfoBox>
         </div>

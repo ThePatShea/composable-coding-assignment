@@ -4,7 +4,7 @@ interface SearchIconProps {
   fill: string;
 }
 
-const SearchIcon: React.FC<SearchIconProps> = ({ height, width, fill }) => (
+const SearchIcon = ({ height, width, fill }: SearchIconProps) => (
   <svg
     width={width}
     height={height}

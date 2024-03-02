@@ -3,7 +3,7 @@ interface SolanaIconProps {
   width: number;
 }
 
-const SolanaIcon: React.FC<SolanaIconProps> = ({ height, width }) => (
+const SolanaIcon = ({ height, width }: SolanaIconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={width}

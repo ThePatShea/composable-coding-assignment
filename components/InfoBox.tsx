@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import { ReactNode, useState } from "react";
 
 import copyTextToClipboard from "@/helpers/copyTextToClipboard";
 import CopyIcon from "@/components/SvgIcon/CopyIcon";
@@ -8,17 +8,24 @@ interface InfoBoxProps {
   title: string;
   subtitle?: string;
   colSpan: number;
-  copy: boolean;
+  copy?: boolean;
   children: ReactNode;
 }
 
-const InfoBox: React.FC<InfoBoxProps> = ({
+const colSpanClasses: Record<number, string> = {
+  1: "md:col-span-1",
+  2: "md:col-span-2",
+  3: "md:col-span-3",
+  4: "md:col-span-4",
+};
+
+const InfoBox = ({
   title,
   subtitle,
   colSpan,
   copy = false,
   children,
-}) => {
+}: InfoBoxProps) => {
   const [toastMessage, setToastMessage] = useState<string>("");
   const [toastKey, setToastKey] = useState<number>(0);
 
@@ -28,17 +35,11 @@ const InfoBox: React.FC<InfoBoxProps> = ({
     setToastKey((prevKey) => prevKey + 1);
   };
 
+  const colSpanClass = colSpanClasses[colSpan] || "md:col-span-4";
+
   return (
     <div
-      className={`col-span-4 ${
-        colSpan === 1
-          ? "md:col-span-1"
-          : colSpan === 2
-          ? "md:col-span-2"
-          : colSpan === 3
-          ? "md:col-span-3"
-          : "md:col-span-4"
-      } bg-white-opacity-02 px-2 py-[22px] rounded-3xl shadow-lg`}
+      className={`col-span-4 ${colSpanClass} bg-white-opacity-02 px-2 py-[22px] rounded-3xl shadow-lg`}
     >
       <h6 className="text-white text-center text-opacity-60 text-xs leading-none mb-[14px]">
         {title}
@@ -49,12 +50,12 @@ const InfoBox: React.FC<InfoBoxProps> = ({
           className={`ml-[6px] hover:cursor-pointer copy-icon-container relative -top-[1px] ${
             copy === false && "hidden"
           }`}
-          onClick={() => copySubtitle(subtitle ?? "")}
+          onClick={() => subtitle && copySubtitle(subtitle)}
         >
           <CopyIcon width={17} height={16} fill="white" />
         </span>
       </p>
-      {toastMessage && <Toast message={toastMessage} key={toastKey} />}
+      {toastMessage && <Toast message={toastMessage} toastKey={toastKey} />}
     </div>
   );
 };

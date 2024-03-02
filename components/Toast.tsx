@@ -1,18 +1,20 @@
-import { useState, useEffect, FC } from "react";
+import { useState, useEffect } from "react";
 
 import CheckCircleIcon from "@/components/SvgIcon/CheckCircleIcon";
 
 interface ToastProps {
   message: string;
-  key: number;
+  toastKey: number;
 }
 
-const Toast: FC<ToastProps> = ({ message, key }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [progress, setProgress] = useState(100);
+const Toast = ({ message, toastKey }: ToastProps) => {
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [progress, setProgress] = useState<number>(100);
 
   useEffect(() => {
+    setProgress(100);
     setIsVisible(true);
+
     const timer = setInterval(() => {
       setProgress((prevProgress) => prevProgress - 1);
     }, 50);
@@ -23,7 +25,7 @@ const Toast: FC<ToastProps> = ({ message, key }) => {
       clearInterval(timer);
       clearTimeout(timeout);
     };
-  }, [message, key]);
+  }, [message, toastKey]);
 
   if (!isVisible) return null;
 

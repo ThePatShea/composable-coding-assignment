@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import SolanaIcon from "@/components/SvgIcon/SolanaIcon";
 
 interface PageHeadingProps {
@@ -7,7 +5,7 @@ interface PageHeadingProps {
   subtitle: string;
 }
 
-const PageHeading: React.FC<PageHeadingProps> = ({ title, subtitle }) => {
+const PageHeading = ({ title, subtitle }: PageHeadingProps) => {
   return (
     <div className="flex px-2 md:px-[23px] py-6 rounded-3xl border border-white border-opacity-10">
       <div className="flex justify-center items-center mr-2 md:mr-6 bg-black rounded-full w-14 h-14">
