@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import moment from "moment";
 
 import ClearSearchButton from "@/components/ClearSearchButton";
@@ -63,7 +64,6 @@ export default function Home() {
 
   const handleRowClick = (block: Block) => {
     dispatch(selectBlock(block));
-    router.push(`/block/${block.slot}`);
   };
 
   return (
@@ -105,38 +105,39 @@ export default function Home() {
             <div className="hidden md:flex md:col-span-2 text-xs">Reward</div>
           </div>
           {activeBlocks.map((block) => (
-            <div
-              key={block.slot}
-              className="grid grid-cols-3 md:grid-cols-11 bg-white-opacity-02 hover:bg-white-opacity-05 px-6 py-[18px] rounded-2xl mb-1 text-white text-opacity-60 hover:text-opacity-100 hover:cursor-pointer"
-              onClick={() => handleRowClick(block)}
-            >
-              <div className="col-span1 md:col-span-2 text-sm text-picasso text-opacity-100 hover:text-picasso-opacity-50">
-                {truncateString(block.blockHash)}
-              </div>
-              <div className="col-span1 md:col-span-2 text-sm text-picasso text-opacity-100 hover:text-picasso-opacity-50">
-                #{block.slot}
-              </div>
-              <div className="col-span1 md:col-span-2 text-sm">
-                {moment(block.timestamp).fromNow()}
-              </div>
-              <div className="hidden md:flex md:col-span-1 text-sm">
-                {block.txCount}
-              </div>
-              <div className="hidden md:flex md:col-span-2 text-sm text-picasso text-opacity-100 hover:text-picasso-opacity-50">
-                {truncateString(block.leader)}
-              </div>
-              <div className="hidden md:flex md:col-span-2 text-sm relative">
-                <div className="absolute flex w-[145px]">
-                  <div className="flex justify-center items-center mr-2 bg-black rounded-full w-4 h-4 relative top-[1px]">
-                    <SolanaIcon height={9} width={9} />
-                  </div>
-                  <div>
-                    {roundDecimal(block.rewardSol, 3)} SOL (
-                    {formatAsUsd(block.rewardUsd)})
+            <Link key={block.slot} href={`/block/${block.slot}`}>
+              <div
+                className="grid grid-cols-3 md:grid-cols-11 bg-white-opacity-02 hover:bg-white-opacity-05 px-6 py-[18px] rounded-2xl mb-1 text-white text-opacity-60 hover:text-opacity-100 hover:cursor-pointer"
+                onClick={() => handleRowClick(block)}
+              >
+                <div className="col-span1 md:col-span-2 text-sm text-picasso text-opacity-100 hover:text-picasso-opacity-50">
+                  {truncateString(block.blockHash)}
+                </div>
+                <div className="col-span1 md:col-span-2 text-sm text-picasso text-opacity-100 hover:text-picasso-opacity-50">
+                  #{block.slot}
+                </div>
+                <div className="col-span1 md:col-span-2 text-sm">
+                  {moment(block.timestamp).fromNow()}
+                </div>
+                <div className="hidden md:flex md:col-span-1 text-sm">
+                  {block.txCount}
+                </div>
+                <div className="hidden md:flex md:col-span-2 text-sm text-picasso text-opacity-100 hover:text-picasso-opacity-50">
+                  {truncateString(block.leader)}
+                </div>
+                <div className="hidden md:flex md:col-span-2 text-sm relative">
+                  <div className="absolute flex w-[145px]">
+                    <div className="flex justify-center items-center mr-2 bg-black rounded-full w-4 h-4 relative top-[1px]">
+                      <SolanaIcon height={9} width={9} />
+                    </div>
+                    <div>
+                      {roundDecimal(block.rewardSol, 3)} SOL (
+                      {formatAsUsd(block.rewardUsd)})
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
