@@ -48,13 +48,13 @@ export default function Block() {
   if (!selectedBlock) {
     return (
       <main className="flex justify-center pt-3 md:pt-[72px] px-2">
-        <div className="flex flex-col w-[800px]">
+        <div className="flex flex-col w-[800px] min-w-[350px]">
           <div className="flex">
             <BackButton handleBackClick={handleBackClick} />
             <div className="flex-grow">
               <PageHeading
                 title="Block not found"
-                subtitle="Please select a block from the list."
+                subtitle="Select a block from the list."
               />
             </div>
           </div>
